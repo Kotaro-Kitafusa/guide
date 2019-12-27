@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Guide
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    - if pilot_signed_in?
+      %p
+        Welcome,
+        %span{style: "color: skyblue"}
+          = current_pilot.email
+        , you are a pilot!
+      = link_to "logout", destroy_pilot_session_path, method: 'delete'
+    - else
+      %span{style: "color: skyblue"} Please, login or signup to login
+      %p
+        = link_to "signup", new_pilot_registration_path
+      %p
+        = link_to "login", new_pilot_session_path
+    = yield
