@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <% if pilot_signed_in? %>
+      <p>
+        Welcome,<span style="color: skyblue"> <%= current_pilot.email %></span>, you are a pilot!
+      </p>
+      <%= link_to "logout", destroy_pilot_session_path, method: 'delete' %>
+    <% else %>
+      <span style="color: skyblue"> Please, login or signup to login</span>
+      <p>
+        <%= link_to "signup", new_pilot_registration_path %>
+      </p>
+      <p>
+        <%= link_to "login", new_pilot_session_path %>
+      </p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
