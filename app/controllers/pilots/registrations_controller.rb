@@ -4,6 +4,13 @@ class Pilots::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
+  def change_pilots_status
+    #current_pilotを取得。
+    #statusが0か1かを条件分岐して下記の処理へ
+    #取得したpilotのstatusを書き換える。
+    # トップページへ遷移させる。
+  end
+
   # GET /resource/sign_up
   def new
     super
@@ -42,7 +49,7 @@ class Pilots::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute, :first_name, :last_name])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

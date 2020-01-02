@@ -16,6 +16,14 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name, autocomplete: "first_name"
+  .field
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name, autocomplete: "last_name"
   .actions
     = f.submit "Sign up"
 = render "pilots/shared/links"
