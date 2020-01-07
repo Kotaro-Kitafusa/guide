@@ -3,4 +3,9 @@ class Pilot < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  enum status: {
+    pilot: 0,
+    traveler: 1
+  }
 end

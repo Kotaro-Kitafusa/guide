@@ -3,12 +3,28 @@
 class Pilots::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  # before_action :authenticate_pilot!(force: true), only: [:change_pilot_status]
+  # before_action { authenticate_pilot!(force: true, only: [:change_pilot_status]) }
+  # before_action { authenticate_pilot!(force: true) }
+  before_action -> { authenticate_pilot!(force: true) }, only: [:change_pilot_status]
 
-  def change_pilots_status
+  def change_pilot_status
+    # binding.pry
     #current_pilotを取得。
+    # pilot = Pilot.
+    # binding.pry
+    if current_pilot.status == "pilot"
+      current_pilot.update(status: "traveler")
+      redirect_to root_path
+    else
+      current_pilot.status == "traveler"
+      current_pilot.update(status: "pilot")
+      redirect_to root_path
+    end
     #statusが0か1かを条件分岐して下記の処理へ
     #取得したpilotのstatusを書き換える。
     # トップページへ遷移させる。
+
   end
 
   # GET /resource/sign_up
