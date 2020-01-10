@@ -65,3 +65,4 @@ gem "haml-rails"
 gem "devise"
 gem 'erb2haml'
 gem 'pry-rails'
+gem 'devise-i18n'
