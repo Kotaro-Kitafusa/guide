@@ -1,7 +1,12 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 en:
-  devise:
+  pilots:
+    shared:
+      links:
+        sign_up: "Sign up"
+        forgot_your_password?: "Forgot your password?"
+        log_in: "Login"
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
@@ -36,7 +41,13 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      new:
+        forgot_your_password?: "Forgt your passwords?"
+        send_me_reset_password_instructions: "Send me reset password instructions"
     registrations:
+      new:
+        sign_up: "Sign up"
+        minimum_password_length: "(%{count} characters at least)"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
@@ -49,6 +60,8 @@ en:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+      new:
+        log_in: "Login"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
