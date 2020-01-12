@@ -23,13 +23,7 @@
             = link_to "logout", destroy_pilot_session_path, method: 'delete'
           %li.header__menu__lists
             = link_to "change your status", change_pilot_status_path
-          %li.header__menu__lists
-            - if I18n.locale.to_s == "ja"
-              %span
-                = link_to "English", root_path("en")
-            - else
-              %span{style: "vertical-align: bottom"}
-                = link_to "日本語", root_path("ja")
+          = render "shared/i18n_check"
         - else
           %li.header__menu__lists
             %span{style: "color: skyblue"} Please, login or signup to login
@@ -39,11 +33,5 @@
           %li.header__menu__lists
             %span
               = link_to "login", new_pilot_session_path
-          %li.header__menu__lists
-            - if I18n.locale.to_s == "ja"
-              %span
-                = link_to "English", root_path("en")
-            - else
-              %span{style: "vertical-align: bottom"}
-                = link_to "日本語", root_path("ja")
+          = render "shared/i18n_check"
     = yield
