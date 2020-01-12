@@ -12,26 +12,18 @@
       %ul.header__menu
         - if pilot_signed_in?
           %li.header__menu__lists
-            Welcome,
-            %span{style: "color: skyblue"}
-              = current_pilot.email
+            = t(".welcome_user", user: current_pilot.email, status: current_pilot.status)
           %li.header__menu__lists
-            , you are a
-            %span{style: "color: skyblue"}
-              = current_pilot.status
-          %li.header__menu__lists
-            = link_to "logout", destroy_pilot_session_path, method: 'delete'
+            = link_to t(".logout"), destroy_pilot_session_path, method: 'delete'
           %li.header__menu__lists
             = link_to "change your status", change_pilot_status_path
           = render "shared/i18n_check"
         - else
           %li.header__menu__lists
-            %span{style: "color: skyblue"} Please, login or signup to login
+            %span
+              = link_to t(".signup"), new_pilot_registration_path
           %li.header__menu__lists
             %span
-              = link_to "signup", new_pilot_registration_path
-          %li.header__menu__lists
-            %span
-              = link_to "login", new_pilot_session_path
+              = link_to t(".login"), new_pilot_session_path
           = render "shared/i18n_check"
     = yield
