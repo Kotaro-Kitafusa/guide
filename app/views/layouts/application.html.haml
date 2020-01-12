@@ -8,4 +8,42 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %header.header
+      %ul.header__menu
+        - if pilot_signed_in?
+          %li.header__menu__lists
+            Welcome,
+            %span{style: "color: skyblue"}
+              = current_pilot.email
+          %li.header__menu__lists
+            , you are a
+            %span{style: "color: skyblue"}
+              = current_pilot.status
+          %li.header__menu__lists
+            = link_to "logout", destroy_pilot_session_path, method: 'delete'
+          %li.header__menu__lists
+            = link_to "change your status", change_pilot_status_path
+          %li.header__menu__lists
+            - if I18n.locale.to_s == "ja"
+              %span
+                = link_to "English", root_path("en")
+            - else
+              %span{style: "vertical-align: bottom"}
+                = link_to "日本語", root_path("ja")
+        - else
+          %li.header__menu__lists
+            %span{style: "color: skyblue"} Please, login or signup to login
+          %li.header__menu__lists
+            %span
+              = link_to "signup", new_pilot_registration_path
+          %li.header__menu__lists
+            %span
+              = link_to "login", new_pilot_session_path
+          %li.header__menu__lists
+            - if I18n.locale.to_s == "ja"
+              %span
+                = link_to "English", root_path("en")
+            - else
+              %span{style: "vertical-align: bottom"}
+                = link_to "日本語", root_path("ja")
     = yield
