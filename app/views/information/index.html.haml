@@ -1,6 +1,6 @@
 .main
   .main__vbox
-    = video_tag "/videos/citybg.mp4", loop: true, autoplay: true, muted: true, class: "main__vbox__video"
+    = video_tag "/videos/citybg.mp4", loop: true, autoplay: true, muted: true
     .main__vbox__center-menu
       %p Night Guide
       %ul.top-login-links
@@ -10,6 +10,3 @@
           = link_to "FaceBookで登録", root_path, class: "top-login-links__link"
         %li
           = link_to "Googleで登録", root_path, class: "top-login-links__link"
-
-  .main__second
-    %p test

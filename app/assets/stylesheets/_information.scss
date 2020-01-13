@@ -2,12 +2,16 @@
   width: 100%;
   height: 100%;
   &__vbox {
-    display: flex;
-    align-items: center;
-    &__video {
-      object-fit: fill;
-      width: 100%;
+    height: 50vh;
+    position: relative;
+    video {
+      -o-object-fit: cover;
+      object-fit: cover;
+      position: absolute;
       height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
       opacity: 0.9;
       filter: brightness(75%);
     }
@@ -42,8 +46,23 @@
       }
     }
   }
+  // &__second {
+  //   height: 2000px;
+  //   background-color: #444;
+  // }
 }
 ::-webkit-scrollbar {
   display: none;
   -webkit-appearance: none;
+}
+
+@media (min-width: 600px) {
+  .main {
+    &__vbox {
+      height: 100vh;
+      video {
+        height: 100vh;
+      }
+    }
+  }
 }
