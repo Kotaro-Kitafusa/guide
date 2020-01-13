@@ -7,7 +7,7 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
-  %body
+  %body.animsition
     %header.header
       %ul.header__menu
         - if pilot_signed_in?
@@ -21,9 +21,9 @@
         - else
           %li.header__menu__lists
             %span
-              = link_to t(".signup"), new_pilot_registration_path
+              = link_to t(".signup"), new_pilot_registration_path, class: "animsition-link"
           %li.header__menu__lists
             %span
-              = link_to t(".login"), new_pilot_session_path
+              = link_to t(".login"), new_pilot_session_path, class: "animsition-link"
           = render "shared/i18n_check"
     = yield

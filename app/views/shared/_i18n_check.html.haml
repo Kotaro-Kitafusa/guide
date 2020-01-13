@@ -1,7 +1,7 @@
 %li.header__menu__lists
   - if I18n.locale.to_s == "ja"
     %span
-      = link_to "English", root_path("en")
+      = link_to "English", root_path("en"), class: "animsition-link"
   - else
     %span{style: "vertical-align: bottom"}
-      = link_to "日本語", root_path("ja")
+      = link_to "日本語", root_path("ja"), class: "animsition-link"
