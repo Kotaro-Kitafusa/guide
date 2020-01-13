@@ -1,4 +1,10 @@
 ja:
+  layouts:
+    application:
+      welcome_user: "%{user} (%{status})"
+      logout: "ログアウト"
+      signup: "新規登録"
+      login: "ログイン"
   activerecord:
     errors:
       messages:
