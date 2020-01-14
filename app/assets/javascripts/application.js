@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require jquery2
+//= require jquery
 //= require jquery_ujs
 //= require ./src/animsition.min
 //= require_tree .
