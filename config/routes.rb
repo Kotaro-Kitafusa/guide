@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       get 'change_pilot_status', to: 'pilots/registrations#change_pilot_status'
     end
     root to: "information#index"
-    resources :map, only: [:index]
+    resources :map, only: [:index] do
+      collection do
+        patch 'change_pilot_nickname'
+      end
+    end
   end
 end
