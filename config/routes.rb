@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :map, only: [:index] do
       collection do
         patch 'change_pilot_nickname'
+        patch 'change_pilot_location'
       end
     end
   end

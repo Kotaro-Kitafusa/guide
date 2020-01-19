@@ -5,6 +5,7 @@ ja:
       logout: "ログアウト"
       signup: "新規登録"
       login: "ログイン"
+      go_map: "地図へ"
   activerecord:
     errors:
       messages:

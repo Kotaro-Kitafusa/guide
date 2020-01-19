@@ -14,6 +14,8 @@
           %li.header__menu__lists
             = t(".welcome_user", user: current_pilot.email, status: current_pilot.status)
           %li.header__menu__lists
+            = link_to t(".go_map"), map_index_path
+          %li.header__menu__lists
             = link_to t(".logout"), destroy_pilot_session_path, method: 'delete'
           %li.header__menu__lists
             = link_to "change your status", change_pilot_status_path
