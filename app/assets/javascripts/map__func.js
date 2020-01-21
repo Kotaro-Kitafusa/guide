@@ -52,12 +52,14 @@ $(document).ready(function() {
   // https://stackoverflow.com/questions/16202077/high-accuracy-geolocation-html5
   // , timeout:5000
   // maximumAge:10000,
-  var posOptions = { enableHighAccuracy: true }
+  enableHighAccuracy: true
+  var posOptions = {enableHighAccuracy: false, timeout: 5000, maximumAge: Infinity }
 
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(successPos, errorPos, posOptions);
   }
   else {
     console.log('it dosent work');
+    alert('nope');
   }
 });

@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_19_053952) do
+ActiveRecord::Schema.define(version: 2020_01_19_090447) do
+
+  create_table "pilot_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "pilot_id"
+    t.decimal "latitude", precision: 10, scale: 8
+    t.decimal "longitude", precision: 11, scale: 8
+    t.string "prefecture"
+    t.string "address_city"
+    t.string "address_street"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pilot_id"], name: "index_pilot_locations_on_pilot_id"
+  end
 
   create_table "pilots", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,4 +44,5 @@ ActiveRecord::Schema.define(version: 2020_01_19_053952) do
     t.index ["reset_password_token"], name: "index_pilots_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pilot_locations", "pilots"
 end
