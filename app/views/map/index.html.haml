@@ -1,7 +1,10 @@
 .map-wrapper
   .map-wrapper__in
+  .show-map#map
+    = render "show-map"
     %p.show-lati-and-long
-    %h6.userid
-      = current_pilot.id
     %button#reload-location
       リロードする
+= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDyi40ylFbrV5qIOWLYzvZrM9Syx_0Jj8w&callback=initMap', async: "", defer: "defer"
+
+

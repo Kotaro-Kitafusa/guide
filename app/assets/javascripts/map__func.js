@@ -28,7 +28,7 @@ $(document).ready(function() {
       dataType: 'json',
     })
     .done(function(location){
-      console.log(`successfully changed userlodation as ${location.lat}, ${location.lat}`);
+      console.log(`successfully changed userlodation as ${location.lat}, ${location.lng}`);
     })
     .fail(function(){
       console.log('Failed!');

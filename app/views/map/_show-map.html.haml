@@ -1,0 +1,24 @@
+:javascript
+  var marker;
+  var center = {
+    lat: 35.6628647,
+    lng: 139.6999117
+  };
+  function initMap(){
+    var map = new google.maps.Map(document.getElementById('map'), {
+    center: center,
+    zoom: 17
+    });
+    marker = new google.maps.Marker({
+            position: center,
+            map: map,
+            icon: {
+            fillColor: "skyblue",                //塗り潰し色
+            fillOpacity: 0.8,                    //塗り潰し透過率
+            path: google.maps.SymbolPath.CIRCLE, //円を指定
+            scale: 7,                           //円のサイズ
+            strokeColor: "skyblue",             //枠の色
+            strokeWeight: 1.0
+            }
+  })
+  }
