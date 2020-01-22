@@ -1,8 +1,4 @@
 .map-wrapper
-  .map-wrapper__in
-    %p.show-lati-and-long
-    %button#reload-location
-      リロードする
   .show-map#map
     = render "show-map"
 = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDyi40ylFbrV5qIOWLYzvZrM9Syx_0Jj8w&callback=initMap', async: "", defer: "defer"

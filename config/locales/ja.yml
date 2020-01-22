@@ -1,4 +1,11 @@
 ja:
+  module:
+    header:
+      welcome_user: "%{user} (%{status})"
+      logout: "ログアウト"
+      signup: "新規登録"
+      login: "ログイン"
+      go_map: "地図へ"
   layouts:
     application:
       welcome_user: "%{user} (%{status})"
