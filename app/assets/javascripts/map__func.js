@@ -36,11 +36,11 @@ $(document).ready(function() {
       function successPos(pos){
         var lat = pos.coords.latitude;
         var lng = pos.coords.longitude;
-        var location = document.querySelector('.show-lati-and-long');
-        location.innerHTML = `<p class = "location">緯度: ${pos.coords.latitude}</p>
-        <p class = "location">経度: ${pos.coords.longitude}</p>`;
-        var mwi = document.querySelector('.map-wrapper__in');
-        mwi.appendChild(location);
+        // var location = document.querySelector('.show-lati-and-long');
+        // location.innerHTML = `<p class = "location">緯度: ${pos.coords.latitude}</p>
+        // <p class = "location">経度: ${pos.coords.longitude}</p>`;
+        // var mwi = document.querySelector('.map-wrapper__in');
+        // mwi.appendChild(location);
         saveCurrentLocation(lat, lng);
       }
       function errorPos(err){
