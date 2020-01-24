@@ -35,7 +35,6 @@ $(window).load(function() {
       function centerMap(pos){
         console.log('cm act');
         myLatLng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
-        debugger;
         map.setCenter(myLatLng);
         map.setZoom(16);
         marker.setPosition(myLatLng);
