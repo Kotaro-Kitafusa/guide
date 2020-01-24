@@ -7,7 +7,10 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+
   %body.animsition
     - if params[:controller] != "map"
       = render "./module/header"
     = yield
+    - if params[:controller] == "map"
+      = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDyi40ylFbrV5qIOWLYzvZrM9Syx_0Jj8w'
