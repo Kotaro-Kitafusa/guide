@@ -6,24 +6,11 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
+    - if params[:controller] == "map"
+      = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ Rails.application.credentials.google_map[:api_key] }"
     = javascript_include_tag 'application'
+
   %body.animsition
-    %header.header
-      %ul.header__menu
-        - if pilot_signed_in?
-          %li.header__menu__lists
-            = t(".welcome_user", user: current_pilot.email, status: current_pilot.status)
-          %li.header__menu__lists
-            = link_to t(".logout"), destroy_pilot_session_path, method: 'delete'
-          %li.header__menu__lists
-            = link_to "change your status", change_pilot_status_path
-          = render "shared/i18n_check"
-        - else
-          %li.header__menu__lists
-            %span
-              = link_to t(".signup"), new_pilot_registration_path, class: "animsition-link"
-          %li.header__menu__lists
-            %span
-              = link_to t(".login"), new_pilot_session_path, class: "animsition-link"
-          = render "shared/i18n_check"
+    - if params[:controller] != "map"
+      = render "./module/header"
     = yield

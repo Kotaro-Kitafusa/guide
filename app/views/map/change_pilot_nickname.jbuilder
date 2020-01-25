@@ -1,0 +1,1 @@
+json.nickname @pilot.nickname

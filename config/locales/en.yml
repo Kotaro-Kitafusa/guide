@@ -30,9 +30,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  module:
+    header:
+      welcome_user: "%{user} (%{status})"
+      logout: "Logout"
+      signup: "Signup"
+      login: "Login"
+      go_map: "To Map"
   layouts:
     application:
       welcome_user: "%{user} (%{status})"
       logout: "Logout"
       signup: "Signup"
       login: "Login"
+      go_map: "To Map"
