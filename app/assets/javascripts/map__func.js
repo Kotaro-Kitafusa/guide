@@ -33,7 +33,7 @@ $(window).load(function() {
       // }
 
       function centerMap(pos){
-        console.log('cm act');
+        console.log(pos.coords.latitude,pos.coords.longitude);
         myLatLng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
         map.setCenter(myLatLng);
         map.setZoom(16);
