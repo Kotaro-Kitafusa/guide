@@ -27,17 +27,17 @@ set :keep_releases, 5
 
 # master.keyをアップロードする設定
 desc 'upload master.key'
-task :upload do
-  on roles(:app) do |host|
-    if test "[ ! -d #{shared_path}/config ]"
-      execute "mkdir -p #{shared_path}/config"
+  task :upload do
+    on roles(:app) do |host|
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
+      upload!('config/master.key', "#{shared_path}/config/master.key")
     end
-    upload!('config/master.key', "#{shared_path}/config/master.key")
   end
+  before :starting, 'deploy:upload'
+  after :finishing, 'deploy:cleanup'
 end
-before :starting, 'deploy:upload'
-after :finishing, 'deploy:cleanup'
-
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
