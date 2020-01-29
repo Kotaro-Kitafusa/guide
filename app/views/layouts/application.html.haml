@@ -8,6 +8,5 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body.animsition
-    - if params[:controller] != "map"
-      = render "./module/header"
+    = render "./module/header"
     = yield
