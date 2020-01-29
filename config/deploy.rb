@@ -25,7 +25,15 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-#master.keyをsharedにあげる
+# 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+
+#master.keyを読ませる設定: secrets.ymlとは違う
+#shared/config/master.keyにあげる
 desc 'upload master.key'
   task :upload do
     on roles(:app) do |host|
@@ -39,10 +47,11 @@ desc 'upload master.key'
   after :finishing, 'deploy:cleanup'
 end
 
+
 # デプロイ処理が終わった後、Unicornを再起動するための記述
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-end
+# after 'deploy:publishing', 'deploy:restart'
+# namespace :deploy do
+#   task :restart do
+#     invoke 'unicorn:restart'
+#   end
+# end
