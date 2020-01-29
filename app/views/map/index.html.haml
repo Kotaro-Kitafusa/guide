@@ -1,3 +1,4 @@
 .map-wrapper
   .show-map#map
+= Rails.application.credentials.google_map[:api_key]
 = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ Rails.application.credentials.google_map[:api_key] }"
