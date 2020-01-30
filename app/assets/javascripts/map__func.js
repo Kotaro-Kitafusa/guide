@@ -1,5 +1,3 @@
-// $(window).load(function() {
-/////////////////111111111/////////////////
 $(document).ready(function() {
   if($('#map').length){
     console.log('asrgfv');
@@ -16,7 +14,6 @@ $(document).ready(function() {
         });
     }
     initMap();
-/////////////////111111111/////////////////
 
 
       // function saveCurrentLocation(lat, lng){
@@ -35,7 +32,6 @@ $(document).ready(function() {
       //     console.log('Failed!');
       //   })
       // }
-/////////////////111111111/////////////////
 
       function centerMap(pos){
         console.log(pos.coords.latitude,pos.coords.longitude);
@@ -44,7 +40,6 @@ $(document).ready(function() {
         map.setZoom(16);
         marker.setPosition(myLatLng);
       }
-/////////////////111111111/////////////////
 
       // function successPos(pos){
       //   var lat = pos.coords.latitude;
@@ -52,7 +47,6 @@ $(document).ready(function() {
       //   navigator.geolocation.watchPosition(centerMap);
       //   saveCurrentLocation(lat, lng);
       // }
-/////////////////111111111/////////////////
       function errorPos(err){
         console.log(err.message);
       }
@@ -68,4 +62,3 @@ $(document).ready(function() {
       }
   }
 });
-/////////////////111111111/////////////////
