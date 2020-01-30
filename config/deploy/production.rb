@@ -60,4 +60,3 @@ server '18.178.123.60', user: 'ec2-user', roles: %w{app db web}
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-set :branch, 'map_function_change'
