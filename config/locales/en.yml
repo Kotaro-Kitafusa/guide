@@ -30,6 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  reload_map: "reload"
   module:
     header:
       welcome_user: "%{user} (%{status})"
@@ -45,6 +46,7 @@ en:
       login: "Login"
       go_map: "To Map"
       go_top: "To Top"
+      reload_map: "reload"
   layouts:
     application:
       welcome_user: "%{user} (%{status})"

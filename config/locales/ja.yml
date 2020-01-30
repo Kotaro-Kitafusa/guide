@@ -1,4 +1,5 @@
 ja:
+  reload_map: "リロード"
   module:
     header:
       welcome_user: "%{user} (%{status})"
@@ -14,6 +15,7 @@ ja:
       login: "ログイン"
       go_map: "地図へ"
       go_top: "Topへ "
+      reload_map: "リロード"
   layouts:
     application:
       welcome_user: "%{user} (%{status})"

@@ -2,20 +2,19 @@
   height: $header_height;
 }
 .map-wrapper {
-  width: 100vw;
-  // height: calc(100vh - #{$header_height});
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ccc;
   &__in {
     p{
       color: red;
     }
   }
-}
-#map {
-  height: 600px;
-  width: 100vw;
-  background-color: #ccc;
+  #map {
+    height: 600px;
+    width: 100vw;
+    background-color: #ccc;
+  }
+  #list {
+    width: 30%;
+  }
 }
