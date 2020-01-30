@@ -16,29 +16,32 @@ $(document).ready(function() {
     initMap();
 
 
-      // function saveCurrentLocation(lat, lng){
-      //   var lat = lat;
-      //   var lng = lng;
-      //   $.ajax({
-      //     url: "/map/change_pilot_location",
-      //     type: "PATCH",
-      //     data: {lat: lat, lng:lng},
-      //     dataType: 'json',
-      //   })
-      //   .done(function(location){
-      //     console.log(`successfully changed userlocation as ${location.lat}, ${location.lng}`);
-      //   })
-      //   .fail(function(){
-      //     console.log('Failed!');
-      //   })
-      // }
+      function saveCurrentLocation(lat, lng){
+        console.log(lat,lng);
+        var lat = lat;
+        var lng = lng;
+        $.ajax({
+          url: "/map/change_pilot_location",
+          type: "PATCH",
+          data: {lat: lat, lng:lng},
+          dataType: 'json',
+        })
+        .done(function(location){
+          console.log(`successfully changed userlocation as ${location.lat}, ${location.lng}`);
+        })
+        .fail(function(){
+          console.log('Failed!');
+        })
+      }
 
       function centerMap(pos){
-        console.log(pos.coords.latitude,pos.coords.longitude);
         myLatLng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
         map.setCenter(myLatLng);
         map.setZoom(16);
         marker.setPosition(myLatLng);
+        var lat = pos.coords.latitude;
+        var lng = pos.coords.longitude;
+        saveCurrentLocation(lat, lng)
       }
 
       // function successPos(pos){

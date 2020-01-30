@@ -1,4 +1,10 @@
+// reset scss
 @import "./reset";
+
+// variables, mixiin
+@import "./module/variables";
+
+// views
 @import "./information";
 @import "./src/animsition.min";
 @import "./header";
