@@ -2,6 +2,7 @@ class MapController < ApplicationController
   before_action :move_to_index, only:[:index]
 
   def index
+    @gmap_key = ENV["GOOGLE_MAP_API_KEY"]
   end
 
   # def change_pilot_nickname
