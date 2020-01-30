@@ -1,0 +1,7 @@
+%header.header
+  %ul.header__menu
+    - if pilot_signed_in?
+      %li.header__menu__lists
+        = link_to t(".go_top"), root_path
+      %li.header__menu__lists
+        = t(".welcome_user", user: current_pilot.email, status: current_pilot.status)

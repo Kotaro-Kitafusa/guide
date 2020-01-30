@@ -6,6 +6,14 @@ ja:
       signup: "新規登録"
       login: "ログイン"
       go_map: "地図へ"
+      go_top: "Topへ "
+    map_header:
+      welcome_user: "%{user} (%{status})"
+      logout: "ログアウト"
+      signup: "新規登録"
+      login: "ログイン"
+      go_map: "地図へ"
+      go_top: "Topへ "
   layouts:
     application:
       welcome_user: "%{user} (%{status})"
