@@ -60,3 +60,6 @@ server '18.178.123.60', user: 'ec2-user', roles: %w{app db web}
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+#ブランチからデプロイするための設定:第二引数で指定するのに注意！
+set :branch, 'separating_pilot_map_function'
