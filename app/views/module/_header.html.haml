@@ -1,20 +1,24 @@
 %header.header
   %ul.header__menu
-    - if pilot_signed_in?
+    -if params[:controller] != "map"
+      - if pilot_signed_in?
+        %li.header__menu__lists
+          = t(".welcome_user", user: current_pilot.email, status: current_pilot.status)
+        %li.header__menu__lists
+          = link_to t(".go_map"), map_index_path
+        %li.header__menu__lists
+          = link_to t(".logout"), destroy_pilot_session_path, method: 'delete'
+        %li.header__menu__lists
+          = link_to "change your status", change_pilot_status_path
+        = render "shared/i18n_switch_langugage"
+      - else
+        %li.header__menu__lists
+          %span
+            = link_to t(".signup"), new_pilot_registration_path, class: "animsition-link"
+        %li.header__menu__lists
+          %span
+            = link_to t(".login"), new_pilot_session_path, class: "animsition-link"
+        = render "shared/i18n_check"
+    - elsif params[:controller] == "map"
       %li.header__menu__lists
         = t(".welcome_user", user: current_pilot.email, status: current_pilot.status)
-      %li.header__menu__lists
-        = link_to t(".go_map"), map_index_path
-      %li.header__menu__lists
-        = link_to t(".logout"), destroy_pilot_session_path, method: 'delete'
-      %li.header__menu__lists
-        = link_to "change your status", change_pilot_status_path
-      = render "shared/i18n_check"
-    - else
-      %li.header__menu__lists
-        %span
-          = link_to t(".signup"), new_pilot_registration_path, class: "animsition-link"
-      %li.header__menu__lists
-        %span
-          = link_to t(".login"), new_pilot_session_path, class: "animsition-link"
-      = render "shared/i18n_check"
