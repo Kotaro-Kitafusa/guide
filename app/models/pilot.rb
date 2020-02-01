@@ -11,5 +11,4 @@ class Pilot < ApplicationRecord
     pilot: 0,
     traveler: 1
   }
-
 end

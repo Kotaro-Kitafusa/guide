@@ -1,6 +1,5 @@
 $(document).ready(function() {
   if($('#map').length){
-    console.log('asrgfv');
     var myLatLng;
     var map;
     var marker;

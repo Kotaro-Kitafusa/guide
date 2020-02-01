@@ -5,17 +5,56 @@
   width: 100%;
   height: calc(100vh - #{$header_height});
   display: flex;
-  &__in {
-    p{
-      color: red;
-    }
-  }
   #map {
     height: 100%;
     width: 100vw;
     background-color: #ccc;
   }
-  #list {
+  .active-list-wrapper{
+    height: calc(100vh - #{$header_height});
+    display: block;
     width: 30%;
+    overflow: scroll;
+    .active-list-pilots{
+      height: 70px;
+      border-top: 1px solid black;
+      margin-top: 10px;
+      display: flex;
+      &:first-child {
+        border: none;
+      }
+      .pilot-image {
+        height: 100%;
+        width: 40%;
+        display: flex;
+        align-items: center;
+        img {
+          height: 50px;
+          width: 50px;
+          margin: 0 auto;
+          border-radius: 50%;
+          object-fit:cover;
+        }
+      }
+      .pilot-info {
+        height: 100%;
+        width: 60%;
+        text-align: center;
+        .pilot-name {
+          padding-top: 10px;
+        }
+        .pilot-message {
+          padding-top: 10px;
+        }
+      }
+    }
+    .pilot-details {
+      height: 100px;
+      padding: 10px 0 0 10px;
+      overflow: scroll;
+      &:last-child {
+        margin-bottom: 10px;
+      }
+    }
   }
 }
