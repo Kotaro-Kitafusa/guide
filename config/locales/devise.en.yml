@@ -46,7 +46,7 @@ en:
         send_me_reset_password_instructions: "Send me reset password instructions"
     registrations:
       new:
-        # email: "email"
+        email: "email"
         sign_up: "Sign up"
         minimum_password_length: "(%{count} characters at least)"
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
