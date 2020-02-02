@@ -4,6 +4,6 @@
       %li.header__menu__lists
         = link_to t(".go_top"), root_path
       %li.header__menu__lists
-        = t(".welcome_user", user: current_pilot.email, status: current_pilot.status)
+        = t(".welcome_user", user: current_pilot.email, status: current_pilot.pilot_type)
       %li.header__menu__lists
         = link_to t("reload_map"),  map_index_path, id: "reloadMap"

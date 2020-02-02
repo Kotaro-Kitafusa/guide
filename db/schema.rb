@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_053028) do
     t.integer "status", default: 0, null: false
     t.decimal "lat", precision: 10, scale: 8
     t.decimal "lng", precision: 11, scale: 8
-    t.integer "type", default: 0, null: false
+    t.integer "pilot_type", default: 0, null: false
     t.index ["email"], name: "index_pilots_on_email", unique: true
     t.index ["reset_password_token"], name: "index_pilots_on_reset_password_token", unique: true
   end

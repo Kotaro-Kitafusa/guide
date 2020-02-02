@@ -7,7 +7,7 @@ class Pilot < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  enum status: {
+  enum pilot_type: {
     pilot: 0,
     traveler: 1
   }

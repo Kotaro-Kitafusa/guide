@@ -3,15 +3,15 @@
 class Pilots::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action -> { authenticate_pilot!(force: true) }, only: [:change_pilot_status]
+  before_action -> { authenticate_pilot!(force: true) }, only: [:change_pilot_type]
 
-  def change_pilot_status
-    if current_pilot.status == "pilot"
-      current_pilot.update(status: "traveler")
+  def change_pilot_type
+    if current_pilot.pilot_type == "pilot"
+      current_pilot.update(pilot_type: "traveler")
       redirect_to root_path
     else
-      current_pilot.status == "traveler"
-      current_pilot.update(status: "pilot")
+      current_pilot.pilot_type == "traveler"
+      current_pilot.update(pilot_type: "pilot")
       redirect_to root_path
     end
   end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       }
 
     devise_scope :pilot do
-      get 'change_pilot_status', to: 'pilots/registrations#change_pilot_status'
+      get 'change_pilot_type', to: 'pilots/registrations#change_pilot_type'
     end
     root to: "information#index"
     resources :map, only: [:index] do
