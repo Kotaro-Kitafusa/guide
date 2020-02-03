@@ -7,10 +7,10 @@ class Pilots::RegistrationsController < Devise::RegistrationsController
 
   def change_pilot_type
     if current_pilot.pilot_type == "pilot"
-      current_pilot.update(pilot_type: "traveler")
+      current_pilot.update(pilot_type: "traveller")
       redirect_to root_path
     else
-      current_pilot.pilot_type == "traveler"
+      current_pilot.pilot_type == "traveller"
       current_pilot.update(pilot_type: "pilot")
       redirect_to root_path
     end

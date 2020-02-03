@@ -33,14 +33,16 @@ en:
   reload_map: "reload"
   module:
     header:
-      welcome_user: "%{user} (%{status})"
+      welcome_traveller: "%{user} (traveller)"
+      welcome_pilot: "%{user} (guide)"
       logout: "Logout"
       signup: "Signup"
       login: "Login"
       go_map: "To Map"
       go_top: "To Top"
     map_header:
-      welcome_user: "%{user} (%{status})"
+      welcome_traveller: "%{user} (traveller)"
+      welcome_pilot: "%{user} (guide)"
       logout: "Logout"
       signup: "Signup"
       login: "Login"

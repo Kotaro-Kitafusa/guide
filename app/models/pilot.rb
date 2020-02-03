@@ -9,6 +9,10 @@ class Pilot < ApplicationRecord
 
   enum pilot_type: {
     pilot: 0,
-    traveler: 1
+    traveller: 1
+  }
+  enum status: {
+    inactive: 0,
+    active: 1
   }
 end
