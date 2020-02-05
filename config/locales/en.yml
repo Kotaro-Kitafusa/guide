@@ -42,7 +42,9 @@ en:
       go_top: "To Top"
     map_header:
       welcome_traveller: "%{user} (traveller)"
-      welcome_pilot: "%{user} (guide)"
+      welcome_pilot_active: "%{user} (guide: waiting)"
+      welcome_pilot_inactive: "%{user} (guide: not waiting)"
+      change_status: "change your status"
       logout: "Logout"
       signup: "Signup"
       login: "Login"

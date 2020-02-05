@@ -13,6 +13,7 @@ class Pilot < ApplicationRecord
   }
   enum status: {
     inactive: 0,
-    active: 1
+    active: 1,
+    match: 2
   }
 end

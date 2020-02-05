@@ -10,8 +10,10 @@ ja:
       go_map: "地図へ"
       go_top: "Topへ "
     map_header:
+      change_status: ""
       welcome_traveller: "%{user} (旅行者)"
-      welcome_pilot: "%{user} (ガイド)"
+      welcome_pilot_active: "%{user} (ガイド:待機状態)"
+      welcome_pilot_inactive: "%{user} (ガイド:非待機状態)"
       logout: "ログアウト"
       signup: "新規登録"
       login: "ログイン"
