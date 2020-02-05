@@ -43,6 +43,8 @@ en:
     map_header:
       active_pilot_status: "wait for travellers"
       inactive_pilot_status: "cancel wait"
+      active_traveller_status: "find guides around you"
+      inactive_traveller_status: "finish this service"
       finish_: "find guides around you"
       welcome_traveller: "%{user} (traveller)"
       welcome_pilot_active: "%{user} (guide: waiting)"
