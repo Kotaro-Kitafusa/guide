@@ -41,10 +41,12 @@ en:
       go_map: "To Map"
       go_top: "To Top"
     map_header:
+      active_pilot_status: "wait for travellers"
+      inactive_pilot_status: "cancel wait"
+      finish_: "find guides around you"
       welcome_traveller: "%{user} (traveller)"
       welcome_pilot_active: "%{user} (guide: waiting)"
       welcome_pilot_inactive: "%{user} (guide: not waiting)"
-      change_status: "change your status"
       logout: "Logout"
       signup: "Signup"
       login: "Login"

@@ -10,7 +10,8 @@ ja:
       go_map: "地図へ"
       go_top: "Topへ "
     map_header:
-      change_status: ""
+      active_pilot_status: "待機状態にする"
+      inactive_pilot_status: "待機状態を解除"
       welcome_traveller: "%{user} (旅行者)"
       welcome_pilot_active: "%{user} (ガイド:待機状態)"
       welcome_pilot_inactive: "%{user} (ガイド:非待機状態)"

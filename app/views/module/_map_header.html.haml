@@ -11,6 +11,9 @@
         - elsif current_pilot.pilot_type == "traveller"
           = t(".welcome_traveller", user:current_pilot.email)
       %li.header__menu__lists
-        = link_to t(".change_status"), change_pilot_status_path
+        - if current_pilot.pilot_type == "pilot" && current_pilot.status == "active"
+          = link_to t(".inactive_pilot_status"), change_pilot_status_path
+        - elsif current_pilot.pilot_type == "pilot" && current_pilot.status == "inactive"
+          = link_to t(".active_pilot_status"), change_pilot_status_path
       %li.header__menu__lists
         = link_to t(".reload_map"),  map_index_path, id: "reloadMap"
