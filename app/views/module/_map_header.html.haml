@@ -4,14 +4,7 @@
       %li.header__menu__lists
         = link_to t(".go_top"), root_path
       %li.header__menu__lists
-        - if current_pilot.pilot_type == "pilot" && current_pilot.status == "active"
-          = t(".welcome_pilot_active", user:current_pilot.email)
-        - elsif current_pilot.pilot_type == "pilot" && current_pilot.status == "inactive"
-          = t(".welcome_pilot_inactive", user:current_pilot.email)
-        - elsif current_pilot.pilot_type == "traveller" && current_pilot.status == "active"
-          = t(".welcome_traveller_active", user:current_pilot.email)
-        - elsif current_pilot.pilot_type == "traveller" && current_pilot.status == "inactive"
-          = t(".welcome_traveller_inactive", user:current_pilot.email)
+        = render "./module/show_current_pilot_type"
       %li.header__menu__lists
         - if current_pilot.pilot_type == "pilot" && current_pilot.status == "active"
           = link_to t(".inactive_pilot_status"), change_pilot_status_path

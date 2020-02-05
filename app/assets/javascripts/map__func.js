@@ -14,6 +14,9 @@ $(document).ready(function() {
     }
     initMap();
 
+    function caliculationDistance(){
+      console.log('hel');
+    }
 
       function saveCurrentLocation(lat, lng){
         console.log(lat,lng);

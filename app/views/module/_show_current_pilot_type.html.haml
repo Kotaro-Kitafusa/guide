@@ -1,0 +1,8 @@
+- if current_pilot.pilot_type == "pilot" && current_pilot.status == "active"
+  = t(".welcome_pilot_active", user:current_pilot.email)
+- elsif current_pilot.pilot_type == "pilot" && current_pilot.status == "inactive"
+  = t(".welcome_pilot_inactive", user:current_pilot.email)
+- elsif current_pilot.pilot_type == "traveller" && current_pilot.status == "active"
+  = t(".welcome_traveller_active", user:current_pilot.email)
+- elsif current_pilot.pilot_type == "traveller" && current_pilot.status == "inactive"
+  = t(".welcome_traveller_inactive", user:current_pilot.email)
