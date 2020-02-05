@@ -1,0 +1,8 @@
+- if current_pilot.pilot_type == "pilot" && current_pilot.status == "active"
+  = link_to t(".inactive_pilot_status"), change_pilot_status_path
+- elsif current_pilot.pilot_type == "pilot" && current_pilot.status == "inactive"
+  = link_to t(".active_pilot_status"), change_pilot_status_path
+- elsif current_pilot.pilot_type == "traveller" && current_pilot.status == "inactive"
+  = link_to t(".active_traveller_status"), change_pilot_status_path
+- elsif current_pilot.pilot_type == "traveller" && current_pilot.status == "active"
+  = link_to t(".inactive_traveller_status"), change_pilot_status_path

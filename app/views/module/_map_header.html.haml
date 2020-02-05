@@ -6,13 +6,6 @@
       %li.header__menu__lists
         = render "./module/show_current_pilot_type"
       %li.header__menu__lists
-        - if current_pilot.pilot_type == "pilot" && current_pilot.status == "active"
-          = link_to t(".inactive_pilot_status"), change_pilot_status_path
-        - elsif current_pilot.pilot_type == "pilot" && current_pilot.status == "inactive"
-          = link_to t(".active_pilot_status"), change_pilot_status_path
-        - elsif current_pilot.pilot_type == "traveller" && current_pilot.status == "inactive"
-          = link_to t(".active_traveller_status"), change_pilot_status_path
-        - elsif current_pilot.pilot_type == "traveller" && current_pilot.status == "active"
-          = link_to t(".inactive_traveller_status"), change_pilot_status_path
+        = render "./module/show_current_pilot_status"
       %li.header__menu__lists
         = link_to t(".reload_map"),  map_index_path, id: "reloadMap"

@@ -9,16 +9,17 @@ ja:
       login: "ログイン"
       go_map: "地図へ"
       go_top: "Topへ "
+    show_current_pilot_status:
+      active_pilot_status: "待機状態にする"
+      inactive_pilot_status: "待機状態を解除"
+      active_traveller_status: "近くのガイドを探す"
+      inactive_traveller_status: "探すのをやめる"
     show_current_pilot_type:
       welcome_traveller_active: "%{user} (旅行者: 近くのガイド表示中)"
       welcome_traveller_inactive: "%{user} (旅行者: 近くのガイドを探してください)"
       welcome_pilot_active: "%{user} (ガイド:待機状態)"
       welcome_pilot_inactive: "%{user} (ガイド:非待機状態)"
     map_header:
-      active_pilot_status: "待機状態にする"
-      inactive_pilot_status: "待機状態を解除"
-      active_traveller_status: "近くのガイドを探す"
-      inactive_traveller_status: "探すのをやめる"
       logout: "ログアウト"
       signup: "新規登録"
       login: "ログイン"
