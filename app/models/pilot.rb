@@ -16,4 +16,13 @@ class Pilot < ApplicationRecord
     active: 1,
     match: 2
   }
+
+  def change_pilot_status
+    if self.status == "inactive"
+      self.update(status: "active")
+    else
+       self.status == "active"
+       self.update(status: "inactive")
+    end
+  end
 end

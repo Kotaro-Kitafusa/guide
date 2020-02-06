@@ -14,7 +14,25 @@ $(document).ready(function() {
     }
     initMap();
 
-    function caliculationDistance(){
+    // パイロットを探すボタンクリックで待機中のガイドの緯度経度を取得し表示
+    $("#find_pilots").on('click', function(e){
+      console.log('you clicked #find_pilots');
+      $.ajax({
+        url: "/map/find_guides",
+        type: "GET",
+        data: "",
+        dataType: 'json',
+      })
+      .done(function(pilot){
+        pilot.forEach( function(p){
+          console.log(`id: ${p.id}, lat: ${p.lat}, lng: ${p.lng}`)
+        });
+      })
+      .fail(function(){
+        console.log('Failed!');
+      })
+    })
+    function calcDistance(){
       console.log('hel');
     }
 

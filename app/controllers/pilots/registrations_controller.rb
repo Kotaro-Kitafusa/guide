@@ -17,14 +17,9 @@ class Pilots::RegistrationsController < Devise::RegistrationsController
   end
 
   def change_pilot_status
-    if current_pilot.status == "inactive"
-       current_pilot.update(status: "active")
-       redirect_to map_index_path
-    else
-       current_pilot.status == "active"
-       current_pilot.update(status: "inactive")
-       redirect_to map_index_path
-    end
+    @pilot = current_pilot
+    @pilot.change_pilot_status
+    redirect_to map_index_path
   end
 
   # GET /resource/sign_up

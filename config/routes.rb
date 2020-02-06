@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     root to: "information#index"
     resources :map, only: [:index] do
       collection do
+        get 'find_guides'
         patch 'change_pilot_nickname'
         patch 'change_pilot_location'
       end

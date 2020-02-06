@@ -14,6 +14,17 @@ class MapController < ApplicationController
   #   @pilot.update_attributes(pilot_nickname_params)
   # end
 
+  def find_guides
+    @pilot = current_pilot
+    if current_pilot.status == "inactive"
+      @pilot.change_pilot_status
+    end
+    @pilots = Pilot.where('pilot_type = ? and status = ?', "pilot", 1)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def change_pilot_location
     @pilot_location = PilotLocation.where(pilot_id: current_pilot.id).first_or_initialize
     @pilot_location.latitude = params[:lat]
