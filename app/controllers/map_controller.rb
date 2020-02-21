@@ -19,7 +19,7 @@ class MapController < ApplicationController
     if current_pilot.status == "inactive"
       @pilot.change_pilot_status
     end
-    @pilots = Pilot.where('pilot_type = ? and status = ?', "pilot", 1)
+    @pilots = Pilot.where('pilot_type = ? and status = ?', 1, 1)
     respond_to do |format|
       format.json
     end

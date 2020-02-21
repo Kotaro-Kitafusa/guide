@@ -8,8 +8,8 @@ class Pilot < ApplicationRecord
   validates :last_name, presence: true
 
   enum pilot_type: {
-    pilot: 0,
-    traveller: 1
+    traveller: 0,
+    pilot: 1
   }
   enum status: {
     inactive: 0,

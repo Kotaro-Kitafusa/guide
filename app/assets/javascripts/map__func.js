@@ -2,10 +2,12 @@ $(document).ready(function() {
   if($('#map').length){
     var myLatLng;
     var map;
-    var marker;
+    let marker;
     var markerData = [];
     var infoWindow;
     var contentString = [];
+    var markerLatLng;
+    var pilot_id;
 
     function initMap(){
       mapOptions = { zoom: 15};
@@ -16,61 +18,90 @@ $(document).ready(function() {
         });
     }
     initMap();
+
+    function buildPilotsList(pilot){
+
+    }
+
+    function showPilotsList(pilot) {
+      for (var i =0; i < pilot.length; i++){
+        var insertHTML = buildPilotsList(pilot[i]);
+        $(".active-list-pilots").append(insertHTML);
+      }
+    }
+
+    function makePilotsMarker(pilot, pilot_id, pilotName, pilotLatLng, markerLatLng){
+      marker[pilot_id] = new google.maps.Marker({
+        zIndex:1,
+        map: map
+      });
+      marker[pilot_id].setPosition(markerLatLng);
+        marker[pilot_id].setValues({
+          type: "point",
+          pilot_id: pilot_id,
+          name: pilotName,
+          latlng: pilotLatLng,
+          isShown: true
+        });
+      //動的に追加されたmarkerをクリックできるようにする
+        google.maps.event.addListener(marker[pilot_id], "click", function(){
+          console.log(this.get("name"), this.get("latlng"));
+          console.log(this);
+        });
+    }
+
     // アクティブ状態のパイロットのピンを立てる
     function showPilots(pilot){
-      for (var i = 0; i < pilot.length; i++) {
-        //吹き出しの中身を生成
-        contentString[i] = `
-          <div id = "content" data-pilot-id = ${pilot[i].id}"
-            <p> Hello World </p>
-          </div>
-          `
-        infoWindow[i] = new google.maps.InfoWindow({
-          content: contentString[i]
-        });
-
+      // Pilot情報を元にmarkerを立てる記述
+      for (let i = 0; i < pilot.length; i++) {
+        pilot_id = pilot[i].pilot_id
         markerLatLng = new google.maps.LatLng({lat: pilot[i].lat, lng: pilot[i].lng}); // 緯度経度のデータ作成
-        marker[i] = new google.maps.Marker({
-          position: markerLatLng, // マーカーを立てる位置を指定
-          map: map, // マーカーを立てる地図を指定
-        });
-        marker[i].setValues({type: "point", id: pilot[i].id});
+        let pilotLatLng = [pilot[i].lat, pilot[i].lng];
+        let pilotName = pilot[i].name;
+
+        if(!marker[pilot_id]){
+          makePilotsMarker(pilot, pilot_id, pilotName, pilotLatLng, markerLatLng)
+          } else if(marker[pilot_id].get("pilot_id") == pilot_id && marker[pilot_id].get("latlng").toString() !== pilotLatLng.toString()){
+            marker[pilot_id].setMap(null);
+            makePilotsMarker(pilot, pilot_id, pilotName, pilotLatLng, markerLatLng)
+            console.log(marker[pilot_id].get("name"), marker[pilot_id].get("pilot_id"), marker[pilot_id].get("latlng"));
+          }
       }
-      console.log(marker);
-      marker.addListener('click', function() {
-        infoWindow.open(map, marker);
-      });
-      // showInfoWindows(pilot)
-      //  console.log((marker.typeof);
-       //動的に追加されたmarkerをクリックできるようにする
-      //  $(document).google.maps.event.addListener(marker, "click", function(){
-      //   console.log('yo');
-      //   console.log(this);
-      //  });
+      //   //吹き出しの中身を生成
+      //   contentString[i] = `
+      //     <div id = "content" data-pilot-id = ${pilot[i].id}"
+      //       <p> Hello World </p>
+      //     </div>
+      //     `
+      //   infoWindow[i] = new google.maps.InfoWindow({
+      //     content: contentString[i]
+      //   });
       }
 
       function showInfoWindows(pilot){
-        console.log(pilot);
+        // console.log(pilot);
       }
-    // パイロットを探すボタンクリックで待機中のガイドの緯度経度を取得し表示
-    $("#find_pilots").on('click', function(e){
-      $.ajax({
-        url: "/map/find_guides",
-        type: "GET",
-        data: "",
-        dataType: 'json',
-      })
-      .done(function(pilot){
-        showPilots(pilot)
-      })
-      .fail(function(){
-        console.log('Failed!');
-      })
-    })
-    function calcDistance(){
-      console.log('hel');
-    }
 
+    // パイロットを探すボタンクリックで待機中のガイドの緯度経度を取得し表示
+    // $("#find_pilots").on('click', function(e){
+    //   $.ajax({
+    //     url: "/map/find_guides",
+    //     type: "GET",
+    //     data: "",
+    //     dataType: 'json',
+    //   })
+    //   .done(function(pilot){
+    //     showPilots(pilot)
+    //   })
+    //   .fail(function(){
+    //     console.log('Failed!');
+    //   })
+    // })
+
+    //２点間の距離を計算する
+    // function calcDistance(){
+    //   console.log('hel');
+    // }
       function saveCurrentLocation(lat, lng){
         var lat = lat;
         var lng = lng;
@@ -88,14 +119,31 @@ $(document).ready(function() {
         })
       }
 
+      function setPilotsMarker(){
+        $.ajax({
+          url: "/map/find_guides",
+          type: "GET",
+          data: "",
+          dataType: 'json',
+        })
+        .done(function(pilot){
+          showPilots(pilot)
+        })
+        .fail(function(){
+          console.log('Failed!');
+        })
+      }
+
+
       function centerMap(pos){
         myLatLng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
         map.setCenter(myLatLng);
-        map.setZoom(14);
+        map.setZoom(12);
         marker.setPosition(myLatLng);
         var lat = pos.coords.latitude;
         var lng = pos.coords.longitude;
         saveCurrentLocation(lat, lng)
+        // setPilotsMarker()
       }
 
       // function successPos(pos){
@@ -113,6 +161,7 @@ $(document).ready(function() {
 
       if(navigator.geolocation){
         navigator.geolocation.watchPosition(centerMap, errorPos, posOptions);
+        setInterval(setPilotsMarker, 5000);
       }
       else {
         alert('nope');
