@@ -8,6 +8,10 @@ $(document).ready(function() {
     var contentString = [];
     var markerLatLng;
     var pilot_id;
+    const includedPilotIdArray = [];
+    let markerArray = [];
+    let deletedPilotId = [];
+    // const pilotIdArray = [];
 
     function initMap(){
       mapOptions = { zoom: 15};
@@ -45,14 +49,36 @@ $(document).ready(function() {
         });
       //動的に追加されたmarkerをクリックできるようにする
         google.maps.event.addListener(marker[pilot_id], "click", function(){
-          console.log(this.get("name"), this.get("latlng"));
           console.log(this);
         });
+        // isArrayIncluded(markerArray, marker[pilot_id].get("pilot_id"));
+        markerArray = isArrayIncluded(markerArray, pilot_id);
     }
+
+    function isArrayIncluded(array, checkId){
+          if (!array.includes(checkId)){
+            array.push(checkId);
+          }
+        return array;
+    }
+
+  function checkDeletedId(markerArray, pilotIdArray){
+    // markerArrayに対して
+    let array = [];
+    array = markerArray.filter(pilot_id =>
+      // pilotIdArrayに存在しない要素が返る
+      !pilotIdArray.includes(pilot_id)
+      );
+      return array;
+  }
 
     // アクティブ状態のパイロットのピンを立てる
     function showPilots(pilot){
-      // Pilot情報を元にmarkerを立てる記述
+      const pilotIdArray = [];
+      for(let i = 0; i < pilot.length; i++){
+        pilot_id = pilot[i].pilot_id
+        pilotIdArray.push(pilot_id);
+      }
       for (let i = 0; i < pilot.length; i++) {
         pilot_id = pilot[i].pilot_id
         markerLatLng = new google.maps.LatLng({lat: pilot[i].lat, lng: pilot[i].lng}); // 緯度経度のデータ作成
@@ -62,11 +88,27 @@ $(document).ready(function() {
         if(!marker[pilot_id]){
           makePilotsMarker(pilot, pilot_id, pilotName, pilotLatLng, markerLatLng)
           } else if(marker[pilot_id].get("pilot_id") == pilot_id && marker[pilot_id].get("latlng").toString() !== pilotLatLng.toString()){
-            marker[pilot_id].setMap(null);
-            makePilotsMarker(pilot, pilot_id, pilotName, pilotLatLng, markerLatLng)
-            console.log(marker[pilot_id].get("name"), marker[pilot_id].get("pilot_id"), marker[pilot_id].get("latlng"));
+              marker[pilot_id].setMap(null);
+              delete marker[[pilot_id]]
+              makePilotsMarker(pilot, pilot_id, pilotName, pilotLatLng, markerLatLng)
+            // console.log(marker[pilot_id].get("name"), marker[pilot_id].get("pilot_id"), marker[pilot_id].get("latlng"));
           }
-      }
+        }
+        console.log(`markerId: ${markerArray}, pilotId: ${pilotIdArray}`)
+        let deletedIds = [];
+        // console.log(`けすまえ ${deletedIds}`); //checkようにのこす
+        deletedIds = checkDeletedId(markerArray, pilotIdArray)
+        // console.log(`けしたいmarkerId ${deletedIds}`); //checkようにのこす
+        markerArray = pilotIdArray
+        //非アクティブ/match状態になったガイドのピンを消す
+        if(deletedIds.length > 0){
+          deletedIds.forEach((val) => {
+            marker[val].setMap(null);
+            delete marker[val]
+            // console.log(`deleted ${val} marker`);
+          })
+        }
+        // console.log(marker);
       //   //吹き出しの中身を生成
       //   contentString[i] = `
       //     <div id = "content" data-pilot-id = ${pilot[i].id}"
@@ -120,6 +162,7 @@ $(document).ready(function() {
       }
 
       function setPilotsMarker(){
+        // console.log('going to set new pilots.');
         $.ajax({
           url: "/map/find_guides",
           type: "GET",
